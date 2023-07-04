@@ -1,0 +1,68 @@
+Question 8:
+
+SQL queries
+
+a) All the temperature data.
+
+SELECT Temperature
+FROM database;
+
+
+
+b) All the cities, but without repetition.
+
+SELECT DISTINCT City
+FROM database;
+
+
+
+c) All the records for India.
+
+SELECT *
+FROM database
+WHERE Country = 'India';
+
+
+
+d) All the Fall records.
+
+SELECT *
+FROM database
+WHERE Season = 'Fall';
+
+
+
+e) The city, country, and season for which the average rainfall is between 200 and 400 millimeters.
+
+SELECT City, Country, Season
+FROM database
+GROUP BY City, Country, Season
+HAVING AVG(Rainfall) BETWEEN 200 AND 400;
+
+
+
+f) The city and country for which the average Fall temperature is above 20 degrees, in increasing temperature order.
+
+SELECT City, Country
+FROM database
+WHERE Season = 'Fall'
+GROUP BY City, Country
+HAVING AVG(Temperature) > 20
+ORDER BY AVG(Temperature) ASC;
+
+
+
+g) The total annual rainfall for Cairo.
+
+SELECT SUM(Rainfall) AS TotalRainfall
+FROM database
+WHERE City = 'Cairo';
+
+
+
+h) The total rainfall for each season.
+
+SELECT Season, SUM(Rainfall) AS TotalRainfall
+FROM database
+GROUP BY Season;
+
